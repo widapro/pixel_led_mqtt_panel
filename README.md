@@ -57,6 +57,11 @@ The display has booting and connecting to wifi, then the display subscribe to MQ
 
 ## Flash esp8266 (WeMos D1):
 
+##### Install libraries in Arduino IDE
+* PubSubClient https://pubsubclient.knolleary.net/
+* MD_MAX72XX https://github.com/MajicDesigns/MD_MAX72XX
+* MD_Parola (with dependencies) https://github.com/MajicDesigns/MD_Parola
+
 ##### First need to change config section in file `pixel_led_mqtt_panel.ino`:
 ```
   // Wifi settings //
@@ -98,7 +103,8 @@ void setup() {
 ```
 
 
-Then configure automation in Home Asisstant to send temperature to display:
+#### Then configure automation in Home Asisstant:
+Send sensor value each time when a value has been changed
 ```
 ---
 - alias: Outside temp change - send new temp to wled panel mqtt
@@ -111,7 +117,10 @@ Then configure automation in Home Asisstant to send temperature to display:
       data:
         topic: wled/zone0_text
         payload_template: "{{ states('sensor.outside_thp_sensor_3') }} C"
+```
 
+First matrix panel start. When matrix panel publish message "up" in wled/status MQTT topic HA sends a message and change scroll effect
+```
 - alias: wled panel ON mqtt - send outside temp mqtt
   initial_state: 'on'
   trigger:
