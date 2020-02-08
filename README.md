@@ -55,6 +55,15 @@ The display has booting and connecting to wifi, then the display subscribe to MQ
       PA_SCROLL_DOWN,     // 26
 ```
 
+## Icons
+For icons, I created a font with several icons to override the regular alphabet. This font applied just only for **zone1**. You can find a mapping card in `wLedFont.h`.
+You can paint icons whatever you want using this online tool: https://pjrp.github.io/MDParolaFontEditor
+
+Feel free to add new icons and update the existing `wLedFont.h` in the repository.
+<p align="center">
+<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="https://raw.githubusercontent.com/widapro/pixel_led_mqtt_panel/master/img/icons_map.jpg">
+</p>
+
 ## Flash esp8266 (WeMos D1):
 
 ##### Install libraries in Arduino IDE
