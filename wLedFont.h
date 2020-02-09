@@ -73,7 +73,7 @@ const MD_MAX72XX::fontType_t wLedFont[] PROGMEM =
   8, 0, 255, 129, 129, 129, 137, 255, 0,   // 69      letter E - Door
   8, 0, 40, 52, 251, 251, 52, 40, 0,   // 70          letter - F Female
   0,  // 71
-  0,   // 72         
+  0,   // 72           
   0,  // 73
   0,  // 74
   8, 0, 224, 191, 231, 5, 1, 0, 0,   // 75            letter K - key
