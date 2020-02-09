@@ -78,7 +78,7 @@ You can paint icons whatever you want using this online tool: https://pjrp.githu
 
 Feel free to add new icons and update the existing `wLedFont.h` in the repository.
 <p align="center">
-<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="https://raw.githubusercontent.com/widapro/pixel_led_mqtt_panel/master/img/icons_map.jpg">
+<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="https://user-images.githubusercontent.com/13320319/74108108-fd881700-4b76-11ea-963a-20427e6bc831.png">
 </p>
 
 ## Flash esp8266 (WeMos D1):
