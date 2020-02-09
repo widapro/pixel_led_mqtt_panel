@@ -25,87 +25,358 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
   
   if(strcmp(topic, "wled/scrolleffect") == 0) { 
     Serial.println("set new scrolleffect");
-    uint8_t  inFX, outFX;
-    textEffect_t  effect[] =
-    {
-      PA_RANDOM, // 1
-      PA_PRINT,
-      PA_SCAN_HORIZ,
-      PA_SCROLL_LEFT,
-      PA_WIPE,
-      //PA_ROCKET,
-      PA_SCAN_VERTX,
-      PA_SCROLL_UP_LEFT,
-      PA_SCROLL_UP,
-      PA_FADE, //8
-      PA_OPENING_CURSOR,
-      PA_GROW_UP,
-      PA_SCROLL_UP_RIGHT,
-      PA_BLINDS, //12
-      PA_CLOSING,
-      PA_GROW_DOWN,
-     // PA_PACMAN2,
-      PA_SCAN_VERT, //15
-      PA_SCROLL_DOWN_LEFT,
-      PA_WIPE_CURSOR,
-      PA_SCAN_HORIZX,
-      PA_DISSOLVE,
-      PA_MESH, //20
-      PA_OPENING,
-      PA_CLOSING_CURSOR,
-      PA_SCROLL_DOWN_RIGHT,
-      PA_SCROLL_RIGHT,
-      PA_SLICE,
-      PA_SCROLL_DOWN,
-      //PA_PACMAN1,
-    };
 
-    outFX = PayloadString.toInt() % ARRAY_SIZE(effect);
-    inFX = PayloadString.toInt() % ARRAY_SIZE(effect);
-    P.setTextEffect(0, effect[inFX], effect[outFX]);      
+    if(PayloadString == "PA_RANDOM") {
+          P.setTextEffect(0, PA_RANDOM, PA_RANDOM);
+    }
+
+    if(PayloadString == "PA_PRINT") {
+          P.setTextEffect(0, PA_PRINT, PA_PRINT);
+    }
+
+    if(PayloadString == "PA_SCAN_HORIZ") {
+          P.setTextEffect(0, PA_SCAN_HORIZ, PA_SCAN_HORIZ);
+    }
+
+    if(PayloadString == "PA_SCROLL_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_LEFT, PA_SCROLL_LEFT);
+    }
+
+    if(PayloadString == "PA_WIPE") {
+          P.setTextEffect(0, PA_WIPE, PA_WIPE);
+    }
+
+    if(PayloadString == "PA_SCAN_VERTX") {
+          P.setTextEffect(0, PA_SCAN_VERTX, PA_SCAN_VERTX);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_UP_LEFT, PA_SCROLL_UP_LEFT);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP") {
+          P.setTextEffect(0, PA_SCROLL_UP, PA_SCROLL_UP);
+    }
+
+    if(PayloadString == "PA_FADE") {
+          P.setTextEffect(0, PA_FADE, PA_FADE);
+    }
+
+    if(PayloadString == "PA_OPENING_CURSOR") {
+          P.setTextEffect(0, PA_OPENING_CURSOR, PA_OPENING_CURSOR);
+    }
+
+    if(PayloadString == "PA_GROW_UP") {
+          P.setTextEffect(0, PA_GROW_UP, PA_GROW_UP);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_UP_RIGHT, PA_SCROLL_UP_RIGHT);
+    }
+
+    if(PayloadString == "PA_BLINDS") {
+          P.setTextEffect(0, PA_BLINDS, PA_BLINDS);
+    }
+
+    if(PayloadString == "PA_CLOSING") {
+          P.setTextEffect(0, PA_CLOSING, PA_CLOSING);
+    }
+
+    if(PayloadString == "PA_GROW_DOWN") {
+          P.setTextEffect(0, PA_GROW_DOWN, PA_GROW_DOWN);
+    }
+
+    if(PayloadString == "PA_SCAN_VERT") {
+          P.setTextEffect(0, PA_SCAN_VERT, PA_SCAN_VERT);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_DOWN_LEFT, PA_SCROLL_DOWN_LEFT);
+    }
+
+    if(PayloadString == "PA_WIPE_CURSOR") {
+          P.setTextEffect(0, PA_WIPE_CURSOR, PA_WIPE_CURSOR);
+    }
+
+    if(PayloadString == "PA_SCAN_HORIZX") {
+          P.setTextEffect(0, PA_SCAN_HORIZX, PA_SCAN_HORIZX);
+    }
+    if(PayloadString == "PA_DISSOLVE") {
+          P.setTextEffect(0, PA_DISSOLVE, PA_DISSOLVE);
+    }
+
+    if(PayloadString == "PA_MESH") {
+          P.setTextEffect(0, PA_MESH, PA_MESH);
+    }
+
+    if(PayloadString == "PA_OPENING") {
+          P.setTextEffect(0, PA_OPENING, PA_OPENING);
+    }
+
+    if(PayloadString == "PA_CLOSING_CURSOR") {
+          P.setTextEffect(0, PA_CLOSING_CURSOR, PA_CLOSING_CURSOR);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_DOWN_RIGHT, PA_SCROLL_DOWN_RIGHT);
+    }
+
+    if(PayloadString == "PA_SCROLL_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_RIGHT, PA_SCROLL_RIGHT);
+    }
+
+    if(PayloadString == "PA_SLICE") {
+          P.setTextEffect(0, PA_SLICE, PA_SLICE);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN") {
+          P.setTextEffect(0, PA_SCROLL_DOWN, PA_SCROLL_DOWN);
+    }
+
+// CUSTOM ANIMATIONS
+
+    if(PayloadString == "PACMAN") {
+          P.setSpriteData(pacman1, W_PMAN1, F_PMAN1, pacman2, W_PMAN2, F_PMAN2);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "WAVE") {
+          P.setSpriteData(wave, W_WAVE, F_WAVE, wave, W_WAVE, F_WAVE);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "ROLL") {
+          P.setSpriteData(roll1, W_ROLL1, F_ROLL1, roll2, W_ROLL2, F_ROLL2);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "LINES") {
+          P.setSpriteData(lines, W_LINES, F_LINES, lines, W_LINES, F_LINES);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "ARROW") {
+          P.setSpriteData(arrow1, W_ARROW1, F_ARROW1, arrow2, W_ARROW2, F_ARROW2);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "SAILBOAT") {
+          P.setSpriteData(sailboat, W_SAILBOAT, F_SAILBOAT, sailboat, W_SAILBOAT, F_SAILBOAT);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "STEAMBOAT") {
+          P.setSpriteData(steamboat, W_STEAMBOAT, F_STEAMBOAT, steamboat, W_STEAMBOAT, F_STEAMBOAT);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "HEART") {
+          P.setSpriteData(heart, W_HEART, F_HEART, heart, W_HEART, F_HEART);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "INVADER") {
+          P.setSpriteData(invader, W_INVADER, F_INVADER, invader, W_INVADER, F_INVADER);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "ROCKET") {
+          P.setSpriteData(rocket, W_ROCKET, F_ROCKET, rocket, W_ROCKET, F_ROCKET);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "FBALL") {
+          P.setSpriteData(fireball, W_FBALL, F_FBALL, fireball, W_FBALL, F_FBALL);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "CHEVRON") {
+          P.setSpriteData(chevron, W_CHEVRON, F_CHEVRON, chevron, W_CHEVRON, F_CHEVRON);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
+
+    if(PayloadString == "WALKER") {
+          P.setSpriteData(walker, W_WALKER, F_WALKER, walker, W_WALKER, F_WALKER);
+          P.setTextEffect(0, PA_SPRITE, PA_SPRITE);
+    }
   }
 
   if(strcmp(topic, "wled/scrolleffect_without_exit") == 0) { 
     Serial.println("set new scrolleffect");
-    uint8_t  inFX, outFX;
-    textEffect_t  effect[] =
-    {
-      PA_RANDOM,
-      PA_PRINT,
-      PA_SCAN_HORIZ,
-      PA_SCROLL_LEFT,
-      PA_WIPE,
-      //PA_ROCKET,
-      PA_SCAN_VERTX,
-      PA_SCROLL_UP_LEFT,
-      PA_SCROLL_UP,
-      PA_FADE, //8
-      PA_OPENING_CURSOR,
-      PA_GROW_UP,
-      PA_SCROLL_UP_RIGHT,
-      PA_BLINDS, //12
-      PA_CLOSING,
-      PA_GROW_DOWN,
-     // PA_PACMAN2,
-      PA_SCAN_VERT, //15
-      PA_SCROLL_DOWN_LEFT,
-      PA_WIPE_CURSOR,
-      PA_SCAN_HORIZX,
-      PA_DISSOLVE,
-      PA_MESH, //20
-      PA_OPENING,
-      PA_CLOSING_CURSOR,
-      PA_SCROLL_DOWN_RIGHT,
-      PA_SCROLL_RIGHT,
-      PA_SLICE,
-      PA_SCROLL_DOWN,
-      //PA_PACMAN1,
-    };
-    
-    outFX = PayloadString.toInt() % ARRAY_SIZE(effect);
-    inFX = PayloadString.toInt() % ARRAY_SIZE(effect);
 
-    P.setTextEffect(0, effect[inFX], PA_NO_EFFECT);      
+    if(PayloadString == "PA_RANDOM") {
+          P.setTextEffect(0, PA_RANDOM, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_PRINT") {
+          P.setTextEffect(0, PA_PRINT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCAN_HORIZ") {
+          P.setTextEffect(0, PA_SCAN_HORIZ, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_LEFT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_WIPE") {
+          P.setTextEffect(0, PA_WIPE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCAN_VERTX") {
+          P.setTextEffect(0, PA_SCAN_VERTX, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_UP_LEFT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP") {
+          P.setTextEffect(0, PA_SCROLL_UP, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_FADE") {
+          P.setTextEffect(0, PA_FADE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_OPENING_CURSOR") {
+          P.setTextEffect(0, PA_OPENING_CURSOR, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_GROW_UP") {
+          P.setTextEffect(0, PA_GROW_UP, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_UP_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_UP_RIGHT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_BLINDS") {
+          P.setTextEffect(0, PA_BLINDS, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_CLOSING") {
+          P.setTextEffect(0, PA_CLOSING, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_GROW_DOWN") {
+          P.setTextEffect(0, PA_GROW_DOWN, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCAN_VERT") {
+          P.setTextEffect(0, PA_SCAN_VERT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN_LEFT") {
+          P.setTextEffect(0, PA_SCROLL_DOWN_LEFT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_WIPE_CURSOR") {
+          P.setTextEffect(0, PA_WIPE_CURSOR, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCAN_HORIZX") {
+          P.setTextEffect(0, PA_SCAN_HORIZX, PA_NO_EFFECT);
+    }
+    if(PayloadString == "PA_DISSOLVE") {
+          P.setTextEffect(0, PA_DISSOLVE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_MESH") {
+          P.setTextEffect(0, PA_MESH, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_OPENING") {
+          P.setTextEffect(0, PA_OPENING, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_CLOSING_CURSOR") {
+          P.setTextEffect(0, PA_CLOSING_CURSOR, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_DOWN_RIGHT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_RIGHT") {
+          P.setTextEffect(0, PA_SCROLL_RIGHT, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SLICE") {
+          P.setTextEffect(0, PA_SLICE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "PA_SCROLL_DOWN") {
+          P.setTextEffect(0, PA_SCROLL_DOWN, PA_NO_EFFECT);
+    }
+
+// CUSTOM ANIMATIONS
+
+    if(PayloadString == "PACMAN") {
+          P.setSpriteData(pacman1, W_PMAN1, F_PMAN1, pacman2, W_PMAN2, F_PMAN2);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "WAVE") {
+          P.setSpriteData(wave, W_WAVE, F_WAVE, wave, W_WAVE, F_WAVE);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "ROLL") {
+          P.setSpriteData(roll1, W_ROLL1, F_ROLL1, roll2, W_ROLL2, F_ROLL2);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "LINES") {
+          P.setSpriteData(lines, W_LINES, F_LINES, lines, W_LINES, F_LINES);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "ARROW") {
+          P.setSpriteData(arrow1, W_ARROW1, F_ARROW1, arrow2, W_ARROW2, F_ARROW2);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "SAILBOAT") {
+          P.setSpriteData(sailboat, W_SAILBOAT, F_SAILBOAT, sailboat, W_SAILBOAT, F_SAILBOAT);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "STEAMBOAT") {
+          P.setSpriteData(steamboat, W_STEAMBOAT, F_STEAMBOAT, steamboat, W_STEAMBOAT, F_STEAMBOAT);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "HEART") {
+          P.setSpriteData(heart, W_HEART, F_HEART, heart, W_HEART, F_HEART);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "INVADER") {
+          P.setSpriteData(invader, W_INVADER, F_INVADER, invader, W_INVADER, F_INVADER);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "ROCKET") {
+          P.setSpriteData(rocket, W_ROCKET, F_ROCKET, rocket, W_ROCKET, F_ROCKET);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "FBALL") {
+          P.setSpriteData(fireball, W_FBALL, F_FBALL, fireball, W_FBALL, F_FBALL);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "CHEVRON") {
+          P.setSpriteData(chevron, W_CHEVRON, F_CHEVRON, chevron, W_CHEVRON, F_CHEVRON);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
+
+    if(PayloadString == "WALKER") {
+          P.setSpriteData(walker, W_WALKER, F_WALKER, walker, W_WALKER, F_WALKER);
+          P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
+    }
   }
 }
 

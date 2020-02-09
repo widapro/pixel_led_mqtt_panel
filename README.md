@@ -21,39 +21,56 @@ The display has booting and connecting to wifi, then the display subscribe to MQ
 * `wled/zone0_text`                - main text for zone0
 * `wled/zone1_text`                - sight zone (left segment sun in demo picture ^)
 * `wled/intensity`                 - display brightnes [0-15], default 5
-* `wled/scrolleffect`              - number of scroll effect for zone0, both effect for entry and exit text _[**send only number**, not effect name]_
-* `wled/scrolleffect_without_exit` - number scroll effect for zone 0, only entry effect, the text will not go out and still stay on display until new text coming _[**send only number**, not effect name]_
+* `wled/scrolleffect`              - scroll effect for zone0, both effect for entry and exit text _[**send scroll name from list below**]_
+* `wled/scrolleffect_without_exit` - scroll effect for zone 0, only entry effect, the text will not go out and still stay on display until new text coming _[**send scroll name from list below**]_
 
-#### Scroll effect list;
-```
-      PA_RANDOM,          // 0
-      PA_PRINT,
-      PA_SCAN_HORIZ,
-      PA_SCROLL_LEFT,     // 3
-      PA_WIPE,
-      PA_SCAN_VERTX,
-      PA_SCROLL_UP_LEFT,  // 6
-      PA_SCROLL_UP,
-      PA_FADE,
-      PA_OPENING_CURSOR,  // 9
-      PA_GROW_UP,
-      PA_SCROLL_UP_RIGHT,
-      PA_BLINDS,          // 12
-      PA_CLOSING,
-      PA_GROW_DOWN,
-      PA_SCAN_VERT,       // 15
-      PA_SCROLL_DOWN_LEFT,
-      PA_WIPE_CURSOR,
-      PA_SCAN_HORIZX,     // 18
-      PA_DISSOLVE,
-      PA_MESH,
-      PA_OPENING,         // 21
-      PA_CLOSING_CURSOR,
-      PA_SCROLL_DOWN_RIGHT,
-      PA_SCROLL_RIGHT,    // 24
-      PA_SLICE,
-      PA_SCROLL_DOWN,     // 26
-```
+##### Scroll effect list
+Default effects:
+* `PA_RANDOM`
+* `PA_PRINT`
+* `PA_SCAN_HORIZ`
+* `PA_SCROLL_LEFT`
+* `PA_WIPE`
+* `PA_SCAN_VERTX`
+* `PA_SCROLL_UP_LEFT`
+* `PA_SCROLL_UP`
+* `PA_FADE`
+* `PA_OPENING_CURSOR`
+* `PA_GROW_UP`
+* `PA_SCROLL_UP_RIGHT`
+* `PA_BLINDS`
+* `PA_CLOSING`
+* `PA_GROW_DOWN`
+* `PA_SCAN_VERT`
+* `PA_SCROLL_DOWN_LEFT`
+* `PA_WIPE_CURSOR`
+* `PA_SCAN_HORIZX`
+* `PA_DISSOLVE`
+* `PA_MESH`
+* `PA_OPENING`
+* `PA_CLOSING_CURSOR`
+* `PA_SCROLL_DOWN_RIGHT`
+* `PA_SCROLL_RIGHT`
+* `PA_SLICE`
+* `PA_SCROLL_DOWN`
+
+Custom effects:
+* `PACMAN`
+* `WAVE`
+* `ROLL`
+* `LINES`
+* `ARROW`
+* `SAILBOAT`
+* `STEAMBOAT`
+* `HEART`
+* `INVADER`
+* `ROCKET`
+* `FBALL`
+* `CHEVRON`
+* `WALKER`
+
+<a href="https://youtu.be/ofMR-GpBN78" target="_blank" >Custom effects demo video</a>
+
 
 ## Icons
 For icons, I created a font with several icons to override the regular alphabet. This font applied just only for **zone1**. You can find a mapping card in `wLedFont.h`.
