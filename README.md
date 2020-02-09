@@ -157,7 +157,7 @@ First matrix panel start. When matrix panel publish message "up" in wled/status 
     - service: mqtt.publish
       data:
         topic: wled/scrolleffect
-        payload_template: "9"
+        payload_template: "PACMAN"
     - service: mqtt.publish
       data:
         topic: wled/zone0_text
@@ -171,7 +171,7 @@ First matrix panel start. When matrix panel publish message "up" in wled/status 
     - service: mqtt.publish
       data:
         topic: wled/scrolleffect_without_exit
-        payload_template: "26"
+        payload_template: "PACMAN"
     - service: mqtt.publish
       data:
         topic: wled/zone0_text
