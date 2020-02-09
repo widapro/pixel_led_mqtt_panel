@@ -78,7 +78,7 @@ You can paint icons whatever you want using this online tool: https://pjrp.githu
 
 Feel free to add new icons and update the existing `wLedFont.h` in the repository.
 <p align="center">
-<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="https://raw.githubusercontent.com/widapro/pixel_led_mqtt_panel/master/img/icons_map.jpg">
+<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="<img width="800" height="259" title="wLed icons map" alt="wLed icons map" src="https://raw.githubusercontent.com/widapro/pixel_led_mqtt_panel/master/img/icons_map.jpg">
 </p>
 
 ## Flash esp8266 (WeMos D1):
@@ -157,7 +157,7 @@ First matrix panel start. When matrix panel publish message "up" in wled/status 
     - service: mqtt.publish
       data:
         topic: wled/scrolleffect
-        payload_template: "9"
+        payload_template: "PACMAN"
     - service: mqtt.publish
       data:
         topic: wled/zone0_text
@@ -171,7 +171,7 @@ First matrix panel start. When matrix panel publish message "up" in wled/status 
     - service: mqtt.publish
       data:
         topic: wled/scrolleffect_without_exit
-        payload_template: "26"
+        payload_template: "PACMAN"
     - service: mqtt.publish
       data:
         topic: wled/zone0_text
