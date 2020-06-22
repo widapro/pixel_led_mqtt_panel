@@ -1,3 +1,10 @@
+// TOPICS
+String T_ZONE0_TEXT = TOPIC_PREFIX + "/zone0_text";
+String T_ZONE1_TEXT = TOPIC_PREFIX + "/zone1_text";
+String T_INTENSITY = TOPIC_PREFIX + "/intensity";
+String T_EFFECT = TOPIC_PREFIX + "/scrolleffect";
+String T_EFFECT_WITHOUT_EXIT = TOPIC_PREFIX + "/scrolleffect_without_exit";
+
 void MQTTCallback(char* topic, byte* payload, unsigned int length) {
   String PayloadString = "";
   for (int i = 0; i < length; i++) { PayloadString = PayloadString + (char)payload[i]; }
@@ -6,24 +13,24 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
   Serial.println(topic);  
   Serial.println(PayloadString);  
   
-  if(strcmp(topic, "wled/zone0_text") == 0) {  
+  if(strcmp(topic, (char*) T_ZONE0_TEXT.c_str()) == 0) {
     Serial.println("zone0 set new Text");
     strcpy(zone0_Message, PayloadString.c_str());
     zone0_newMessageAvailable = true; 
   } 
 
-  if(strcmp(topic, "wled/zone1_text") == 0) {  
+  if(strcmp(topic, (char*) T_ZONE1_TEXT.c_str()) == 0) {
     Serial.println("zone1 set new Text");
     strcpy(zone1_Message, PayloadString.c_str());
     zone1_newMessageAvailable = true; 
   } 
  
-  if(strcmp(topic, "wled/intensity") == 0) { 
+  if(strcmp(topic, (char*) T_INTENSITY.c_str()) == 0) {
     Serial.println("set new Intensity");
     P.setIntensity(PayloadString.toInt());      
   }  
   
-  if(strcmp(topic, "wled/scrolleffect") == 0) { 
+  if(strcmp(topic,  (char*) T_EFFECT.c_str()) == 0) {
     Serial.println("set new scrolleffect");
 
     if(PayloadString == "PA_RANDOM") {
@@ -201,7 +208,7 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
     }
   }
 
-  if(strcmp(topic, "wled/scrolleffect_without_exit") == 0) { 
+  if(strcmp(topic, (char*) T_EFFECT_WITHOUT_EXIT.c_str() ) == 0) {
     Serial.println("set new scrolleffect");
 
     if(PayloadString == "PA_RANDOM") {
@@ -388,12 +395,12 @@ void reconnect() {
 
     // Attempt to connect
     if (client.connect(clientId.c_str(),mqtt_user,mqtt_password)) {
-      Serial.println("subscribe objects"); 
-      client.subscribe("wled/zone0_text");  
-      client.subscribe("wled/zone1_text");  
-      client.subscribe("wled/intensity");  
-      client.subscribe("wled/scrolleffect"); 
-      client.subscribe("wled/scrolleffect_without_exit");      
+      Serial.println("subscribe objects");
+      client.subscribe((char*) T_ZONE0_TEXT.c_str());
+      client.subscribe((char*) T_ZONE1_TEXT.c_str());
+      client.subscribe((char*) T_INTENSITY.c_str());
+      client.subscribe((char*) T_EFFECT.c_str());
+      client.subscribe((char*) T_EFFECT_WITHOUT_EXIT.c_str());
     }
     else
     {
