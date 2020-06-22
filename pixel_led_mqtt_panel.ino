@@ -22,6 +22,8 @@ const char* OTA_password    = "change_me";
 const char* mqtt_server = "192.168.1.250";
 const char* mqtt_user = "mqtt_user";
 const char* mqtt_password = "change_me";
+  // MQTT TOPIC PREFIX //
+String TOPIC_PREFIX = "wled";
 
   // Parola display settings //
 #define HARDWARE_TYPE MD_MAX72XX::FC16_HW // type of device hardware https://majicdesigns.github.io/MD_MAX72XX/page_hardware.html
@@ -50,9 +52,11 @@ int i = 0;
 
 void welcome_message(void) {
   if (i == 1) {
-    if (client.connected()) {       
+    if (client.connected()) {
+      String T_STATUS = TOPIC_PREFIX + "/status";
+
       Serial.println("MQTT connected");
-      client.publish("wled/status", "up"); 
+      client.publish((char*) T_STATUS.c_str(), "up");
       i++;
     }
   }
