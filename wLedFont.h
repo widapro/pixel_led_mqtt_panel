@@ -85,7 +85,7 @@ const MD_MAX72XX::fontType_t wLedFont[] PROGMEM =
   0,  // 81
   0,  // 82
   0,  // 83
-  0,  // 84
+  8, 3, 3, 0, 62, 65, 65, 65, 65,  // 84              letter T - degree sign, C(elcius) For use when zone1 is right-most panel
   0,  // 85
   0,  // 86
   8, 5, 2, 13, 170, 10, 102, 10, 206,  // 87          letter W - weather
