@@ -4,6 +4,9 @@ String T_ZONE1_TEXT = TOPIC_PREFIX + "/zone1_text";
 String T_INTENSITY = TOPIC_PREFIX + "/intensity";
 String T_EFFECT = TOPIC_PREFIX + "/scrolleffect";
 String T_EFFECT_WITHOUT_EXIT = TOPIC_PREFIX + "/scrolleffect_without_exit";
+String T_SCROLL_SPEED = TOPIC_PREFIX + "/scrollspeed";
+String T_SCROLL_PAUSE = TOPIC_PREFIX + "/scrollpause";
+String T_SCROLL_ALIGN = TOPIC_PREFIX + "/scrollalign";
 
 void MQTTCallback(char* topic, byte* payload, unsigned int length) {
   String PayloadString = "";
@@ -385,6 +388,29 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
           P.setTextEffect(0, PA_SPRITE, PA_NO_EFFECT);
     }
   }
+     if(strcmp(topic, (char*) T_SCROLL_SPEED.c_str() ) == 0) {
+          Serial.println("set new scrollspeed");
+          scrollSpeed = atoi (PayloadString.c_str ());
+          P.setSpeed(0,scrollSpeed);
+    }
+    if(strcmp(topic, (char*) T_SCROLL_PAUSE.c_str() ) == 0) {
+          Serial.println("set new scrollpause");
+          scrollPause = atoi (PayloadString.c_str ());
+          P.setPause(0,scrollPause);
+  }
+
+    if(strcmp(topic, (char*) T_SCROLL_ALIGN.c_str() ) == 0) {
+          Serial.println("set new textalign");
+          if(PayloadString == "LEFT") {
+              P.setTextAlignment(0,PA_LEFT);
+          }
+          if(PayloadString == "RIGHT") {
+              P.setTextAlignment(0,PA_RIGHT);
+          }
+          if(PayloadString == "CENTER") {
+              P.setTextAlignment(0,PA_CENTER);
+          }
+  }
 }
 
 void reconnect() {
@@ -401,6 +427,10 @@ void reconnect() {
       client.subscribe((char*) T_INTENSITY.c_str());
       client.subscribe((char*) T_EFFECT.c_str());
       client.subscribe((char*) T_EFFECT_WITHOUT_EXIT.c_str());
+      client.subscribe((char*) T_SCROLL_SPEED.c_str());
+      client.subscribe((char*) T_SCROLL_PAUSE.c_str());
+      client.subscribe((char*) T_SCROLL_ALIGN.c_str());
+// end of Maki's mods
     }
     else
     {
