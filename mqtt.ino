@@ -7,6 +7,7 @@ String T_EFFECT_WITHOUT_EXIT = TOPIC_PREFIX + "/scrolleffect_without_exit";
 String T_SCROLL_SPEED = TOPIC_PREFIX + "/scrollspeed";
 String T_SCROLL_PAUSE = TOPIC_PREFIX + "/scrollpause";
 String T_SCROLL_ALIGN = TOPIC_PREFIX + "/scrollalign";
+String T_POWER = TOPIC_PREFIX + "/poweroff";
 
 void MQTTCallback(char* topic, byte* payload, unsigned int length) {
   String PayloadString = "";
@@ -411,6 +412,15 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
               P.setTextAlignment(0,PA_CENTER);
           }
   }
+     if(strcmp(topic, (char*) T_POWER.c_str() ) == 0) {
+           Serial.println("In the power module");
+           if(PayloadString == "TRUE") {
+               P.displayShutdown(1);
+          }
+          if(PaylaodString == "FALSE") {
+              P.displayShutdown(0);
+          }
+    }
 }
 
 void reconnect() {
@@ -430,6 +440,8 @@ void reconnect() {
       client.subscribe((char*) T_SCROLL_SPEED.c_str());
       client.subscribe((char*) T_SCROLL_PAUSE.c_str());
       client.subscribe((char*) T_SCROLL_ALIGN.c_str());
+      client.subscribe((char*) T_POWER.c_str());
+
 // end of Maki's mods
     }
     else
