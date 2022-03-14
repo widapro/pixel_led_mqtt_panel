@@ -417,7 +417,7 @@ void MQTTCallback(char* topic, byte* payload, unsigned int length) {
            if(PayloadString == "TRUE") {
                P.displayShutdown(1);
           }
-          if(PaylaodString == "FALSE") {
+          if(PayloadString == "FALSE") {
               P.displayShutdown(0);
           }
     }
