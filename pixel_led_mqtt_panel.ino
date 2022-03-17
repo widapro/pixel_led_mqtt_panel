@@ -23,7 +23,7 @@ const char* mqtt_server = "192.168.1.250";
 const char* mqtt_user = "mqtt_user";
 const char* mqtt_password = "change_me";
   // MQTT TOPIC PREFIX //
-String TOPIC_PREFIX = "wled";
+String TOPIC_PREFIX =  WiFi.macAddress().substring(12);    // This sets  the topic prefix to the last five chars of the MAC, ie: C0:A4
 
   // Parola display settings //
 #define HARDWARE_TYPE MD_MAX72XX::FC16_HW // type of device hardware https://majicdesigns.github.io/MD_MAX72XX/page_hardware.html
@@ -63,7 +63,9 @@ void welcome_message(void) {
 
   if (i == 0) {
     Serial.println("welcome message...");
-    strcpy(zone0_Message, "Welcome!");
+    char charBuf[50];
+    TOPIC_PREFIX.toCharArray(charBuf, 50);
+    strcpy(zone0_Message, charBuf);          // Displays the last five characters of the device MAC address which is to be used as the TOPIC_PREFIX
     zone0_newMessageAvailable = true;
     strcpy(zone1_Message, "i");
     zone1_newMessageAvailable = true;
@@ -91,6 +93,8 @@ void setup_wifi() {
   Serial.println("WiFi ready");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
+  Serial.print("Topic Prefix for this device: ");
+  Serial.println(TOPIC_PREFIX);
 }
 
 void setup() {
