@@ -23,6 +23,10 @@ The display has booting and connecting to wifi, then the display subscribe to MQ
 * `wled/intensity`                 - display brightnes [0-15], default 5
 * `wled/scrolleffect`              - scroll effect for zone0, both effect for entry and exit text _[**send scroll name from list below**]_
 * `wled/scrolleffect_without_exit` - scroll effect for zone 0, only entry effect, the text will not go out and still stay on display until new text coming _[**send scroll name from list below**]_
+* `wled/scrollspeed`               - scroll speed, value is in milliseconds, default is 35
+* `wled/scrollpause`               - scroll pause, value is in milliseconds, default is 2000
+* `wled/scrollalign`               - scroll align, value is one of: "LEFT, CENTER, RIGHT", default is CENTER
+* `wled/poweroff`                  - power off display, possible values: "TRUE" or "FALSE" (capital letters)
 
 ##### Scroll effect list
 Default effects:
