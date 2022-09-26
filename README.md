@@ -1,3 +1,6 @@
+# This project is being continued in a new repository with even more features! https://github.com/widapro/wledPixel
+#
+# 
 # Pixel led MQTT panel (wLed)
 
 wLed panel it's dot matrix display to show information from MQTT topics. It's well integrated with home automation systems like Home-assistant, domoticz and others through MQTT broker.
